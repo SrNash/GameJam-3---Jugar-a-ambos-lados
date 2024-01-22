@@ -26,11 +26,13 @@ public class ButtonController : MonoBehaviour
     public void OpenOptionsMenu()
     {
         optionsMenu.SetActive(true);
+        //Insertar animaciones al abrir el menú aquí.
     }
 
     public void CloseOptionsMenu()
     {
         optionsMenu.SetActive(false);
+        //Insertar animaciones al cerrar el menú aquí.
     }
 
 }
