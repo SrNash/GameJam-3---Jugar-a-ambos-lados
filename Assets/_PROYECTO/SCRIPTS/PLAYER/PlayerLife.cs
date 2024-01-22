@@ -3,9 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerLife : MonoBehaviour
-{    
+{
+    #region INSTANCE
     public static PlayerLife instance;
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+    #endregion
 
+    #region VARIABLES
     [Header("Vida")]
     [SerializeField] int maxLife;    
     [SerializeField] int currentLife;
@@ -19,18 +33,7 @@ public class PlayerLife : MonoBehaviour
     [SerializeField] float timeInvincible;
     [SerializeField] bool isInvincible;
     [SerializeField] float invincibleTimer;
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(this);
-        }
-    }
+    #endregion
 
     void Start()
     {
@@ -43,22 +46,15 @@ public class PlayerLife : MonoBehaviour
     {
         if (isInvincible)
         {
+            //añadir parpadeo??
             invincibleTimer -= Time.deltaTime;
             if (invincibleTimer < 0)
             {
                 isInvincible = false;
-            }           
-
+            }          
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Obstacle"))
-        {
-            ChangeLife(-1);
-        }
-    }
-
+    #region VIDA
     public void ChangeLife(int amount)
     {        
         if (amount < 0)
@@ -74,12 +70,6 @@ public class PlayerLife : MonoBehaviour
         CheckLife();
     }
 
-    public void ChangeTries(int amount)
-    {
-        currentTries += amount;
-        CheckTries();
-    }
-
     private void CheckLife()
     {
         if (currentLife == 0)
@@ -90,6 +80,13 @@ public class PlayerLife : MonoBehaviour
             Debug.Log("ResetLevel");
         }
     }
+    #endregion
+    #region INTENTOS
+    public void ChangeTries(int amount)
+    {
+        currentTries += amount;
+        CheckTries();
+    }    
 
     private void CheckTries()
     {
@@ -97,6 +94,12 @@ public class PlayerLife : MonoBehaviour
         {
             //Añadir fin del juego
             Debug.Log("GameOver");
-        } 
+        }
+
+        if(currentTries > maxTries)
+        {
+            currentTries = maxTries;
+        }
     }
+    #endregion
 }
