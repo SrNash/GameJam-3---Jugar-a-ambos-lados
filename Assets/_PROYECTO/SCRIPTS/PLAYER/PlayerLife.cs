@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerLife : MonoBehaviour
-{
+{    
+    public static PlayerLife instance;
+
     [Header("Vida")]
     [SerializeField] int maxLife;    
     [SerializeField] int currentLife;
@@ -13,8 +15,23 @@ public class PlayerLife : MonoBehaviour
     [SerializeField] int maxTries;
     [SerializeField] int currentTries;
 
+    [Header("Invencibilidad")]
+    [SerializeField] float timeInvincible;
+    [SerializeField] bool isInvincible;
+    [SerializeField] float invincibleTimer;
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+
     void Start()
     {
         currentLife = maxLife;
@@ -22,36 +39,55 @@ public class PlayerLife : MonoBehaviour
         currentTries = startTries;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (isInvincible)
+        {
+            invincibleTimer -= Time.deltaTime;
+            if (invincibleTimer < 0)
+            {
+                isInvincible = false;
+            }           
 
-        
+        }
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            SubtractHealth();
+            ChangeLife(-1);
         }
     }
 
-    public void SubtractHealth()
+    public void ChangeLife(int amount)
     {        
-        currentLife--;
-        Debug.Log("Vida: " + currentLife);
+        if (amount < 0)
+        {
+            if (isInvincible)
+                return;
+
+            isInvincible = true;
+            invincibleTimer = timeInvincible;
+        }
+        //sonido
+        currentLife += amount;
         CheckLife();
+    }
+
+    public void ChangeTries(int amount)
+    {
+        currentTries += amount;
+        CheckTries();
     }
 
     private void CheckLife()
     {
         if (currentLife == 0)
         {
-            currentTries--;
-            Debug.Log("Intentos: " + currentTries);            
-            CheckTries();            
+            ChangeTries(-1);
+            //Resetear nivel
+            currentLife = maxLife;
+            Debug.Log("ResetLevel");
         }
     }
 
@@ -61,12 +97,6 @@ public class PlayerLife : MonoBehaviour
         {
             //Añadir fin del juego
             Debug.Log("GameOver");
-        } else
-        {
-            //Resetear Nivel
-            currentLife = maxLife;            
-            Debug.Log("ResetLevel");
-            Debug.Log("Vida: " + currentLife);
-        }
+        } 
     }
 }
