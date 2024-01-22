@@ -33,10 +33,13 @@ public class PlayerLife : MonoBehaviour
     [SerializeField] float timeInvincible;
     [SerializeField] bool isInvincible;
     [SerializeField] float invincibleTimer;
+    [SerializeField] int numberOfFlashes;
+    SpriteRenderer spriteRend;
     #endregion
 
     void Start()
     {
+        spriteRend = GetComponent<SpriteRenderer>();
         currentLife = maxLife;
         maxTries = startTries;
         currentTries = startTries;
@@ -45,13 +48,20 @@ public class PlayerLife : MonoBehaviour
     void Update()
     {
         if (isInvincible)
-        {
-            //añadir parpadeo??
+        {            
             invincibleTimer -= Time.deltaTime;
             if (invincibleTimer < 0)
             {
                 isInvincible = false;
             }          
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            ChangeLife(-1);
         }
     }
 
@@ -72,8 +82,8 @@ public class PlayerLife : MonoBehaviour
 
             isInvincible = true;
             invincibleTimer = timeInvincible;
+            StartCoroutine(ChangeColor());
         }
-        //añadir efecto daño
         //sonido
         currentLife += amount;
         CheckLife();
@@ -85,6 +95,17 @@ public class PlayerLife : MonoBehaviour
         {
             ChangeTries(-1);
             ResetLevel();            
+        }
+    }
+
+    private IEnumerator ChangeColor()
+    {
+        for(int i=0; i<numberOfFlashes; i++)
+        {
+            spriteRend.color = new Color(1, 0, 0, 0.5f);
+            yield return new WaitForSeconds(timeInvincible / (numberOfFlashes * 2));
+            spriteRend.color = Color.white;
+            yield return new WaitForSeconds(timeInvincible / (numberOfFlashes * 2));
         }
     }
     #endregion
