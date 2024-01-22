@@ -34,12 +34,15 @@ public class PlayerLife : MonoBehaviour
     [SerializeField] bool isInvincible;
     [SerializeField] float invincibleTimer;
     [SerializeField] int numberOfFlashes;
-    SpriteRenderer spriteRend;
+
+    [SerializeField] SpriteRenderer spriteRend;
+    Animator animator;
     #endregion
 
     void Start()
     {
-        spriteRend = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+        //spriteRend = GetComponent<SpriteRenderer>();
         currentLife = maxLife;
         maxTries = startTries;
         currentTries = startTries;
@@ -48,11 +51,13 @@ public class PlayerLife : MonoBehaviour
     void Update()
     {
         if (isInvincible)
-        {            
+        {
+            animator.SetBool("IsDamage", true);
             invincibleTimer -= Time.deltaTime;
             if (invincibleTimer < 0)
             {
                 isInvincible = false;
+                animator.SetBool("IsDamage", false);
             }          
         }
     }
