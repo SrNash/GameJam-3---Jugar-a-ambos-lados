@@ -54,6 +54,14 @@ public class PlayerLife : MonoBehaviour
             }          
         }
     }
+
+    public void ResetLevel()
+    {
+        //Resetear nivel
+        currentLife = maxLife;
+        Debug.Log("ResetLevel");
+    }
+
     #region VIDA
     public void ChangeLife(int amount)
     {        
@@ -65,6 +73,7 @@ public class PlayerLife : MonoBehaviour
             isInvincible = true;
             invincibleTimer = timeInvincible;
         }
+        //añadir efecto daño
         //sonido
         currentLife += amount;
         CheckLife();
@@ -75,9 +84,7 @@ public class PlayerLife : MonoBehaviour
         if (currentLife == 0)
         {
             ChangeTries(-1);
-            //Resetear nivel
-            currentLife = maxLife;
-            Debug.Log("ResetLevel");
+            ResetLevel();            
         }
     }
     #endregion
