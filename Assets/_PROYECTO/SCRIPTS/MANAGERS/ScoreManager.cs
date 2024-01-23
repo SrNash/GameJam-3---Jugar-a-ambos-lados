@@ -23,6 +23,7 @@ namespace VictorRivero{
 		[Header("Score")]
 		[SerializeField] private TextMeshProUGUI _scoreText;
 		[SerializeField] private int _score;
+		[SerializeField] int _pointsToGetATry;
 		#endregion
 		#region Public Fields
 		#endregion
@@ -69,11 +70,19 @@ namespace VictorRivero{
 		}
 		#endregion
 		#region Private Methods
+		private void CheckPoints()
+		{
+			if (_score % _pointsToGetATry == 0)
+			{
+				PlayerLife.instance.ChangeTries(1);
+			}
+		}
 		#endregion
 		#region Public Methods
 		public void AddPointsToScore(int amount)
 		{
 			_score += amount;
+			CheckPoints();
 		}
 		#endregion
 	}

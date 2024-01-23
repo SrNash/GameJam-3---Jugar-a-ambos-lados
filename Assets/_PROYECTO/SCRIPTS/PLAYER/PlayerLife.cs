@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerLife : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class PlayerLife : MonoBehaviour
     #endregion
 
     #region VARIABLES
+    [Header("Test")]
+    [SerializeField] TextMeshProUGUI triesText;
+
     [Header("Vida")]
     [SerializeField] int maxLife;    
     [SerializeField] int currentLife;
@@ -42,10 +46,9 @@ public class PlayerLife : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        //spriteRend = GetComponent<SpriteRenderer>();
         currentLife = maxLife;
-        maxTries = startTries;
         currentTries = startTries;
+        triesText.SetText("Tries: " + currentTries);
     }
 
     void Update()
@@ -62,6 +65,7 @@ public class PlayerLife : MonoBehaviour
         }
     }
 
+    //Quitar cuando estén los obstaculos
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Obstacle"))
@@ -133,6 +137,7 @@ public class PlayerLife : MonoBehaviour
         {
             currentTries = maxTries;
         }
+        triesText.SetText("Tries: " + currentTries);
     }
     #endregion
 }
