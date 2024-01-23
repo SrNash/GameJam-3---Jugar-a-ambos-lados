@@ -44,6 +44,7 @@ namespace VictorRivero{
             if (_timer >= _timeToDessapear)
 			{
 				gameObject.SetActive(false);
+				_timer = 0.0f;
 			}
 		}
 
@@ -53,6 +54,7 @@ namespace VictorRivero{
 		void Awake()
 		{
             //_timer += Time.deltaTime;
+			_timer = 0.0f;
         }
 	    
 		// FixedUpdate is called at fixed time intervals

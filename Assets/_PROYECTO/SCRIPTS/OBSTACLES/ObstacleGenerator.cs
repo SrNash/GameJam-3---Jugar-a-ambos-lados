@@ -14,8 +14,6 @@ namespace VictorRivero
         #region Static Fields
         #endregion
         #region Const Field
-        const float _x = 0.0f;
-        const float _y = 0.0f;
         const float _z = 180.0f;
         #endregion
         #region Param Fields
@@ -37,6 +35,10 @@ namespace VictorRivero
         [SerializeField] private float _timeToSpawn;
         private float _minTime = 1.0f;
         [SerializeField] private float _maxTime;
+
+        [Space(3)]
+        [Header("Trigger Points")]
+        [SerializeField] private TriggerPoints _trigger;
         #endregion
         #region Public Fields
         #endregion
@@ -82,13 +84,15 @@ namespace VictorRivero
 
             if (_obstacle != null)
             {
+                _obstacle.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+
                 if (_timer >= _timeToSpawn)
                 {
                     if (randomInitPos == 0)
                     {
                         Debug.Log("Point B");
                         //_obstacle.transform.position = _pointB.position;
-                        _obstacle.transform.rotation = Quaternion.Euler(_x, _y, 0.0f);
+                        _obstacle.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
                         _obstacle.GetComponent<ObstaclesMovement>().pointInit = _pointB.gameObject;
                         _obstacle.GetComponent<ObstaclesMovement>().pointFinal = _pointA.gameObject;
                         _obstacle.SetActive(true);
@@ -97,7 +101,11 @@ namespace VictorRivero
                     {
                         Debug.Log("Point D");
                         // _obstacle.transform.position = _pointD.position;
-                        _obstacle.transform.rotation = Quaternion.Euler(_x, _y, _z);
+                        _obstacle.transform.rotation = Quaternion.Euler(0.0f, 0.0f, _z);
+
+                        _trigger = _obstacle.GetComponentInChildren<TriggerPoints>();
+                        _trigger.offset = new Vector3(0.0f, -4.0f, 0.0f);
+
                         _obstacle.GetComponent<ObstaclesMovement>().pointInit = _pointD.gameObject;
                         _obstacle.GetComponent<ObstaclesMovement>().pointFinal = _pointC.gameObject;
                         _obstacle.SetActive(true);

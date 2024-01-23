@@ -22,8 +22,6 @@ public class ObstaclesMovement : MonoBehaviour
     [Header("Object Pool")]
     [SerializeField] private ObjectPool _objectPool;
 
-
-
     public GameObject pointInit { get { return _pointInit; } set { _pointInit = value; } }
     public GameObject pointFinal { get { return _pointFinal; } set { _pointFinal = value; } }
     // Start is called before the first frame update
@@ -53,6 +51,7 @@ public class ObstaclesMovement : MonoBehaviour
         {
             transform.position = _pointInit.transform.position;
             gameObject.SetActive(false);
+            Debug.Log("Desactivando");
         }
     }
 

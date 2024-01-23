@@ -34,13 +34,11 @@ namespace VictorRivero{
         [SerializeField] private Transform _currentPoint;
 
         [Space(3)]
-        [Header("Move")]
-        [SerializeField] private float _speed;
-
-        [Space(3)]
         [Header("Timer")]
         [SerializeField]private float _timer = 0.0f;
         [SerializeField] private float _timeToStartMove;
+
+        
         #endregion
         #region Public Fields
         #endregion

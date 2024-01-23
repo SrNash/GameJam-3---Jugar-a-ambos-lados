@@ -24,6 +24,7 @@ namespace VictorRivero{
         [SerializeField] private float _waitTime;
         #endregion
         #region Public Fields
+        public Vector3 offset { get { return _offset; } set {  _offset = value; } }
         #endregion
         #region Lifecycle
         #endregion
@@ -70,7 +71,7 @@ namespace VictorRivero{
                  
                 if(_point != null)
                 {
-                    _point.GetComponentInChildren<TextMeshProUGUI>().text = _points.ToString();
+                    _point.GetComponentInChildren<TextMeshProUGUI>().text = "+" + _points.ToString();
                     _point.SetActive(true);
                 	_point.transform.position = transform.parent.position + _offset;
                 }
