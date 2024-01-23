@@ -22,6 +22,7 @@ public class ButtonController : MonoBehaviour
 
     public void CloseGame()
     {
+        Debug.Log("Se ha cerrado el juego");
         Application.Quit();
     }
 
