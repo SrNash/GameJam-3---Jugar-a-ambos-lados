@@ -74,11 +74,20 @@ public class PlayerLife : MonoBehaviour
         }
     }
 
-    public void ResetLevel()
+    private void ResetLevel()
     {
+        //hacer una pausa antes de reinciarlo
+        //desactivar poder darle al espacio en ese tiempo
+        animator.SetBool("IsDead", false);
         //Resetear nivel
         currentLife = maxLife;
         Debug.Log("ResetLevel");
+    }
+
+    private void GameOver()
+    {        
+        //Añadir fin del juego
+        Debug.Log("GameOver");
     }
 
     #region VIDA
@@ -102,6 +111,8 @@ public class PlayerLife : MonoBehaviour
     {
         if (currentLife == 0)
         {
+            Debug.Log("Nami");
+            animator.SetBool("IsDead", true);
             ChangeTries(-1);
             ResetLevel();            
         }
@@ -129,8 +140,7 @@ public class PlayerLife : MonoBehaviour
     {
         if (currentTries == 0)
         {
-            //Añadir fin del juego
-            Debug.Log("GameOver");
+            GameOver();   
         }
 
         if(currentTries > maxTries)
