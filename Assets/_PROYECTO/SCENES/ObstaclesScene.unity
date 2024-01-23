@@ -392,6 +392,7 @@ GameObject:
   - component: {fileID: 177794358}
   - component: {fileID: 177794361}
   - component: {fileID: 177794360}
+  - component: {fileID: 177794362}
   m_Layer: 6
   m_Name: RadialObstacle
   m_TagString: Obstacle
@@ -513,6 +514,24 @@ MonoBehaviour:
   _speed: 3
   _timer: 0
   _timeToStartMove: 2
+--- !u!114 &177794362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177794356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ea0aa439f1ace49adb704babc11882, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rb: {fileID: 177794358}
+  _pointFinal: {fileID: 0}
+  _pointInit: {fileID: 0}
+  _currentPoint: {fileID: 0}
+  _speed: 3
+  _objectPool: {fileID: 1736049577}
 --- !u!1 &307378440
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,6 +624,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 866786153924113750, guid: 35b8a0ed96ce76c428b0e7b680f24e01, type: 3}
+      propertyPath: triesText
+      value: 
+      objectReference: {fileID: 538019997}
     - target: {fileID: 1908549638649289216, guid: 35b8a0ed96ce76c428b0e7b680f24e01, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -709,6 +732,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &367119271
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1121611053694024721, guid: f7828eae845f88a4fb1c4b10a7657936, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1121611053694024721, guid: f7828eae845f88a4fb1c4b10a7657936, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1121611053694024721, guid: f7828eae845f88a4fb1c4b10a7657936, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1121611053694024721, guid: f7828eae845f88a4fb1c4b10a7657936, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1121611053694024721, guid: f7828eae845f88a4fb1c4b10a7657936, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1121611053694024721, guid: f7828eae845f88a4fb1c4b10a7657936, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1121611053694024721, guid: f7828eae845f88a4fb1c4b10a7657936, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1121611053694024721, guid: f7828eae845f88a4fb1c4b10a7657936, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1121611053694024721, guid: f7828eae845f88a4fb1c4b10a7657936, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1121611053694024721, guid: f7828eae845f88a4fb1c4b10a7657936, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061046149483115364, guid: f7828eae845f88a4fb1c4b10a7657936, type: 3}
+      propertyPath: m_Name
+      value: CoinItem
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f7828eae845f88a4fb1c4b10a7657936, type: 3}
 --- !u!1 &380279057
 GameObject:
   m_ObjectHideFlags: 0
@@ -868,6 +948,7 @@ GameObject:
   - component: {fileID: 395556557}
   - component: {fileID: 395556559}
   - component: {fileID: 395556560}
+  - component: {fileID: 395556561}
   m_Layer: 6
   m_Name: SpikeObstacle
   m_TagString: Obstacle
@@ -1011,6 +1092,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dmg: -1
+--- !u!114 &395556561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395556552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ea0aa439f1ace49adb704babc11882, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rb: {fileID: 395556557}
+  _pointFinal: {fileID: 0}
+  _pointInit: {fileID: 0}
+  _currentPoint: {fileID: 0}
+  _speed: 3
+  _objectPool: {fileID: 1736049577}
 --- !u!1 &419398045
 GameObject:
   m_ObjectHideFlags: 0
@@ -1311,7 +1410,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &538019996
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1328,7 +1427,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 650, y: 320}
+  m_AnchoredPosition: {x: -705.3, y: 320}
   m_SizeDelta: {x: 480.184, y: 136.2263}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &538019997
@@ -1378,8 +1477,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 120
-  m_fontSizeBase: 120
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2051,10 +2150,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectPool: {fileID: 1736049577}
+  _pointA: {fileID: 1782167719}
   _pointB: {fileID: 1789777915}
+  _pointC: {fileID: 480184473}
   _pointD: {fileID: 792555646}
   _timer: 0
   _timeToSpawn: 2
+  _maxTime: 4
 --- !u!1 &838723876
 GameObject:
   m_ObjectHideFlags: 0
@@ -2347,6 +2449,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scoreText: {fileID: 654492623}
   _score: 0
+  _pointsToGetATry: 500
 --- !u!4 &1294652023
 Transform:
   m_ObjectHideFlags: 0
@@ -3393,6 +3496,7 @@ GameObject:
   - component: {fileID: 2002764882}
   - component: {fileID: 2002764886}
   - component: {fileID: 2002764884}
+  - component: {fileID: 2002764887}
   m_Layer: 6
   m_Name: PostObstacle
   m_TagString: Obstacle
@@ -3523,6 +3627,24 @@ MonoBehaviour:
   _middleScreen: {x: 0, y: -4.37, z: 0}
   _timer: 0
   _timeToStartMove: 3
+--- !u!114 &2002764887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002764880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ea0aa439f1ace49adb704babc11882, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rb: {fileID: 2002764882}
+  _pointFinal: {fileID: 0}
+  _pointInit: {fileID: 0}
+  _currentPoint: {fileID: 0}
+  _speed: 3
+  _objectPool: {fileID: 1736049577}
 --- !u!1 &2123151049
 GameObject:
   m_ObjectHideFlags: 0
@@ -3639,3 +3761,4 @@ SceneRoots:
   - {fileID: 792555646}
   - {fileID: 1531663270}
   - {fileID: 1736049576}
+  - {fileID: 367119271}
