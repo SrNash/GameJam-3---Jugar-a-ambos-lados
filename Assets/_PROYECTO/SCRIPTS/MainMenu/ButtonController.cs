@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class ButtonController : MonoBehaviour
@@ -8,7 +9,8 @@ public class ButtonController : MonoBehaviour
     public GameObject optionsMenu;
     public Animator optionsMenuAnimator;
     private string Menu_Opening, Menu_Closing;
-
+    private bool isOptionMenuOpen = false;
+    public Button playButton, optionsButton, exitButton;
 
     void Start()
     {
@@ -30,6 +32,7 @@ public class ButtonController : MonoBehaviour
     {
         optionsMenu.SetActive(true);
         optionsMenuAnimator.Play("Menu_Opening");
+        isOptionMenuOpen = true;
     }
 
     public void CloseOptionsMenuAnimation()
@@ -42,6 +45,22 @@ public class ButtonController : MonoBehaviour
     public void CloseOptionsMenu()
     {
         optionsMenu.SetActive(false);
+        isOptionMenuOpen = false;
     }
 
+    public void Update()
+    {
+        if (isOptionMenuOpen == true)
+        {
+            playButton.interactable = false;
+            optionsButton.interactable = false;
+            exitButton.interactable = false;
+        }
+        else
+        {
+            playButton.interactable = true;
+            optionsButton.interactable = true;
+            exitButton.interactable = true;
+        }
+    }
 }
