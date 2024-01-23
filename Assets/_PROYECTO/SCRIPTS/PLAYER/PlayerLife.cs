@@ -80,6 +80,7 @@ public class PlayerLife : MonoBehaviour
         //desactivar poder darle al espacio en ese tiempo
         animator.SetBool("IsDead", false);
         //Resetear nivel
+        GameManager.Instance.RestartLevel();
         currentLife = maxLife;
         Debug.Log("ResetLevel");
     }
@@ -87,6 +88,7 @@ public class PlayerLife : MonoBehaviour
     private void GameOver()
     {        
         //Añadir fin del juego
+        GameManager.Instance.GameOver();
         Debug.Log("GameOver");
     }
 
