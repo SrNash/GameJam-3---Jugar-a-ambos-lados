@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 866786153924113750}
   m_Layer: 0
   m_Name: PlayerController
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -577,6 +577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a15d71af74b28b549a3f90c902c78157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triesText: {fileID: 0}
   maxLife: 2
   currentLife: 0
   startTries: 3
