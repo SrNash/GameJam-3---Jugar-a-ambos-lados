@@ -58,24 +58,7 @@ namespace VictorRivero{
 		// Update is called once per frame
 		void Update()
 		{
-            if (_currentPoint == _pointB.transform)
-            {
-                transform.position = _currentPoint.position;
-            }
-            else
-            {
-                _rb.velocity = new Vector2(-_speed, 0.0f);
-            }
-
-            if (Vector2.Distance(transform.position, _currentPoint.position) < 0.5f && _currentPoint == _pointB.transform)
-            {
-                _currentPoint = _pointA.transform;
-            }
-
-            if (Vector2.Distance(transform.position, _currentPoint.position) < 0.5f && _currentPoint == _pointA.transform)
-            {
-                Destroy(gameObject);
-            }
+            
 		}
 
 		// Awake is called when the script is

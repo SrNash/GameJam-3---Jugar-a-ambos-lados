@@ -64,26 +64,6 @@ namespace VictorRivero
         void Update()
         {
             _radialGo.transform.Rotate(_rotation * _speedRot * Time.deltaTime);
-
-            if (_currentPoint == _pointB.transform)
-            {
-                transform.position = _currentPoint.position;
-            }
-            else
-            {
-                //_radialGo.transform.localRotation = Quaternion.Euler(_rotation * _speedRot * Time.deltaTime);
-                _rb.velocity = new Vector2(-_speed, 0.0f);
-            }
-
-            if (Vector2.Distance(transform.position, _currentPoint.position) < 0.5f && _currentPoint == _pointB.transform)
-            {
-                _currentPoint = _pointA.transform;
-            }
-
-            if (Vector2.Distance(transform.position, _currentPoint.position) < 0.5f && _currentPoint == _pointA.transform)
-            {
-                Destroy(gameObject);
-            }
         }
 
         // Awake is called when the script is

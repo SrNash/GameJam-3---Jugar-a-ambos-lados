@@ -111,9 +111,9 @@ namespace VictorRivero{
 			int random = Random.Range(0, _obstaclesToPool - 1);
 			for (int i = 0; i < _pooledObstacles.Count; i++)
 			{
-				if (!_pooledObstacles[i].activeInHierarchy)
+				if (!_pooledObstacles[random].activeInHierarchy)
 				{
-					return _pooledObstacles[i];
+					return _pooledObstacles[random];
 				}
 			}
 			

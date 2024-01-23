@@ -14,6 +14,9 @@ namespace VictorRivero
         #region Static Fields
         #endregion
         #region Const Field
+        const float _x = 0.0f;
+        const float _y = 0.0f;
+        const float _z = 180.0f;
         #endregion
         #region Param Fields
         #endregion
@@ -23,13 +26,17 @@ namespace VictorRivero
 
         [Space(3)]
         [Header("Init Positions")]
+        [SerializeField] private Transform _pointA;
         [SerializeField] private Transform _pointB;
+        [SerializeField] private Transform _pointC;
         [SerializeField] private Transform _pointD;
 
         [Space(3)]
         [Header("Times")]
         [SerializeField] private float _timer;
-        [SerializeField] private float _timeToSpawn = Random.Range(1.0f, 4.0f);
+        [SerializeField] private float _timeToSpawn;
+        private float _minTime = 1.0f;
+        [SerializeField] private float _maxTime;
         #endregion
         #region Public Fields
         #endregion
@@ -79,17 +86,25 @@ namespace VictorRivero
                 {
                     if (randomInitPos == 0)
                     {
-                        _obstacle.transform.position = _pointB.position;
+                        Debug.Log("Point B");
+                        //_obstacle.transform.position = _pointB.position;
+                        _obstacle.transform.rotation = Quaternion.Euler(_x, _y, 0.0f);
+                        _obstacle.GetComponent<ObstaclesMovement>().pointInit = _pointB.gameObject;
+                        _obstacle.GetComponent<ObstaclesMovement>().pointFinal = _pointA.gameObject;
                         _obstacle.SetActive(true);
                     }
-                    else if (randomInitPos == 1)
+                    if (randomInitPos == 1)
                     {
-                        _obstacle.transform.position = _pointD.position;
+                        Debug.Log("Point D");
+                        // _obstacle.transform.position = _pointD.position;
+                        _obstacle.transform.rotation = Quaternion.Euler(_x, _y, _z);
+                        _obstacle.GetComponent<ObstaclesMovement>().pointInit = _pointD.gameObject;
+                        _obstacle.GetComponent<ObstaclesMovement>().pointFinal = _pointC.gameObject;
                         _obstacle.SetActive(true);
                     }
                     
                     _timer = 0.0f;
-                    _timeToSpawn = Random.Range(1.0f, 4.0f);
+                    _timeToSpawn = Random.Range(_minTime, _maxTime);
                 }
             }
         }
