@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace VictorRivero{
@@ -19,6 +20,8 @@ namespace VictorRivero{
         #region Private Fields
         [Header("Damage")]
         [SerializeField] private int _points;
+        [SerializeField] private Vector3 _offset;
+        [SerializeField] private float _waitTime;
         #endregion
         #region Public Fields
         #endregion
@@ -61,6 +64,16 @@ namespace VictorRivero{
             if (collision.CompareTag("Player"))
             {
                 //Player suma puntos
+                ScoreManager.Instance.AddPointsToScore(_points);
+
+                GameObject _point = ObjectPool.Instance.GetPooledNumber();
+                 
+                if(_point != null)
+                {
+                    _point.GetComponentInChildren<TextMeshProUGUI>().text = _points.ToString();
+                    _point.SetActive(true);
+                	_point.transform.position = transform.parent.position + _offset;
+                }
             }
         }
         #endregion
