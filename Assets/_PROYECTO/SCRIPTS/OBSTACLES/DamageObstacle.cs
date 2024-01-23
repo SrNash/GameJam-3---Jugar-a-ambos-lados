@@ -65,6 +65,8 @@ namespace VictorRivero{
             if (collision.CompareTag("Player"))
             {
                 //Player recibe damage del obstaculo
+                PlayerLife.instance.ChangeLife(-_dmg);
+                Debug.Log("Haciendo daño");
             }
         }
         #endregion

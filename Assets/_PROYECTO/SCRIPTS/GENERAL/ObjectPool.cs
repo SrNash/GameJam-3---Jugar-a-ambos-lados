@@ -27,7 +27,9 @@ namespace VictorRivero{
 
 		[Space(1)]
 		[Header("GameObjects to Pool")]
-		[SerializeField] private GameObject _obstacleGo;
+		[SerializeField] private GameObject _spikesObstacleGo;
+		[SerializeField] private GameObject _radialObstacleGo;
+		[SerializeField] private GameObject _postObstacleGo;
 		[SerializeField] private GameObject _numberGo;
         #endregion
         #region Public Fields
@@ -40,15 +42,32 @@ namespace VictorRivero{
         // Start is called before the first frame update
         void Start()
 		{
-			for (int i = 0; i < _obstaclesToPool; i++)
+			for (int i = 0; i < _obstaclesToPool/3; i++)
 			{
-				GameObject obj = Instantiate(_obstacleGo);
-				//obj.transform.parent = transform;
-				obj.SetActive(false);
+                GameObject obj = Instantiate(_spikesObstacleGo);
+
+                //obj.transform.parent = transform;
+                obj.SetActive(false);
 				_pooledObstacles.Add(obj);
 			}
+            for (int i = 0; i < _obstaclesToPool/3; i++)
+            {
+                GameObject obj = Instantiate(_radialObstacleGo);
 
-			for (int i = 0; i < _numbersToPool; i++)
+                //obj.transform.parent = transform;
+                obj.SetActive(false);
+                _pooledObstacles.Add(obj);
+            }
+            for (int i = 0; i < _obstaclesToPool/3; i++)
+            {
+                GameObject obj = Instantiate(_postObstacleGo);
+
+                //obj.transform.parent = transform;
+                obj.SetActive(false);
+                _pooledObstacles.Add(obj);
+            }
+
+            for (int i = 0; i < _numbersToPool; i++)
 			{
 				GameObject obj = Instantiate(_numberGo);
 				//obj.transform.parent = transform;
@@ -89,6 +108,7 @@ namespace VictorRivero{
 		#region Public Methods
 		public GameObject GetPooledObstacle()
 		{
+			int random = Random.Range(0, _obstaclesToPool - 1);
 			for (int i = 0; i < _pooledObstacles.Count; i++)
 			{
 				if (!_pooledObstacles[i].activeInHierarchy)

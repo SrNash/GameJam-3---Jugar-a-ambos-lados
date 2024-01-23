@@ -1,16 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 namespace VictorRivero
 {
 
     /// <summary>
     /// 
     /// </summary>
-
-    [RequireComponent(typeof(Rigidbody2D))]
-    public class RadialObstacle : MonoBehaviour
+    /// 
+    public class PostObstacle : MonoBehaviour
     {
         #region Static Fields
         #endregion
@@ -23,16 +21,6 @@ namespace VictorRivero
         [SerializeField] private Rigidbody2D _rb;
 
         [Space(3)]
-        [Header("Radial GO")]
-        [SerializeField] private GameObject _radialGo;
-
-        [Space(3)]
-        [Header("Radial Rotation")]
-        [SerializeField] private Vector3 _rotation;
-        [SerializeField] private float _speedRot;
-        
-
-        [Space(3)]
         [Header("Patrol Waypoints")]
         [SerializeField] private GameObject _pointA;
         [SerializeField] private GameObject _pointB;
@@ -41,6 +29,10 @@ namespace VictorRivero
         [Space(3)]
         [Header("Move")]
         [SerializeField] private float _speed;
+
+        [Space(3)]
+        [SerializeField] private float _force;
+        [SerializeField] private Vector3 _middleScreen;
 
         [Space(3)]
         [Header("Timer")]
@@ -63,15 +55,12 @@ namespace VictorRivero
         // Update is called once per frame
         void Update()
         {
-            _radialGo.transform.Rotate(_rotation * _speedRot * Time.deltaTime);
-
             if (_currentPoint == _pointB.transform)
             {
                 transform.position = _currentPoint.position;
             }
             else
             {
-                //_radialGo.transform.localRotation = Quaternion.Euler(_rotation * _speedRot * Time.deltaTime);
                 _rb.velocity = new Vector2(-_speed, 0.0f);
             }
 
@@ -84,6 +73,11 @@ namespace VictorRivero
             {
                 Destroy(gameObject);
             }
+
+            if(transform.position == _middleScreen)
+            {
+                _rb.AddForce(new Vector2(0.0f, _force));
+            }
         }
 
         // Awake is called when the script is
@@ -93,6 +87,8 @@ namespace VictorRivero
         {
             _currentPoint = _pointB.transform;
         }
+
+
 
         // FixedUpdate is called at fixed time intervals
         void FixedUpdate()
@@ -111,7 +107,9 @@ namespace VictorRivero
         #endregion
         #region Public Methods
         #endregion
-
+        #region IEnumerators
+        
+        #endregion
         private void OnDrawGizmos()
         {
             //Points Gizmos
