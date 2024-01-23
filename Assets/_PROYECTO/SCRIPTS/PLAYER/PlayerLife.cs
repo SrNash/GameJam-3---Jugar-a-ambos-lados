@@ -52,12 +52,12 @@ public class PlayerLife : MonoBehaviour
     {
         if (isInvincible)
         {
-            animator.SetBool("IsDamage", true);
+            animator.SetBool("IsDamaged", true);
             invincibleTimer -= Time.deltaTime;
             if (invincibleTimer < 0)
             {
                 isInvincible = false;
-                animator.SetBool("IsDamage", false);
+                animator.SetBool("IsDamaged", false);
             }          
         }
     }

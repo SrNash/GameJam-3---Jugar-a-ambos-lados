@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class ButtonController : MonoBehaviour
 {
     public GameObject optionsMenu;
+    public Animator optionsMenuAnimator;
+    private string Menu_Opening, Menu_Closing;
 
 
     void Start()
@@ -26,13 +28,19 @@ public class ButtonController : MonoBehaviour
     public void OpenOptionsMenu()
     {
         optionsMenu.SetActive(true);
-        //Insertar animaciones al abrir el menú aquí.
+        optionsMenuAnimator.Play("Menu_Opening");
+    }
+
+    public void CloseOptionsMenuAnimation()
+    {
+        optionsMenuAnimator.Play("Menu_Closing");
+        optionsMenuAnimator.SetBool("Closed", true);
+        Invoke("CloseOptionsMenu", 0.10f);
     }
 
     public void CloseOptionsMenu()
     {
         optionsMenu.SetActive(false);
-        //Insertar animaciones al cerrar el menú aquí.
     }
 
 }
