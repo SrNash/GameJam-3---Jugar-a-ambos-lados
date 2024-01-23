@@ -12,11 +12,7 @@ public class PlayerCoins : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Coin"))
         {
-            Destroy(collision.gameObject);
+            Instantiate(particlePrefab);
         }
-
-        Instantiate(particlePrefab);
-
-        
     }
 }
