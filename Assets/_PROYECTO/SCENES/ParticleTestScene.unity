@@ -270,28 +270,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1185428401}
   - component: {fileID: 1185428400}
-  - component: {fileID: 1185428399}
   - component: {fileID: 1185428402}
   m_Layer: 0
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1185428399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1185428398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db1f943a649816f4293f582ae271e788, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particles: {fileID: 4461315402405737385, guid: 863eab3b6a2fe744ead8f009e6227dd1, type: 3}
 --- !u!61 &1185428400
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -391,6 +377,7 @@ GameObject:
   - component: {fileID: 1354764805}
   - component: {fileID: 1354764807}
   - component: {fileID: 1354764808}
+  - component: {fileID: 1354764809}
   m_Layer: 0
   m_Name: Square
   m_TagString: Player
@@ -537,6 +524,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1354764809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354764804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8075f9a8353cfb34db892efdb5c9465d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 4461315402405737385, guid: 863eab3b6a2fe744ead8f009e6227dd1, type: 3}
+  points: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
