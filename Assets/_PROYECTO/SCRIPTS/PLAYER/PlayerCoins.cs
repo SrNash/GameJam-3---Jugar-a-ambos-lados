@@ -10,7 +10,7 @@ public class PlayerCoins : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Coin"))
         {
-            Instantiate(particlePrefab);
+            Instantiate(particlePrefab, collision.transform.position, collision.transform.rotation);
         }
     }
 }
