@@ -30,22 +30,7 @@ namespace VictorRivero
         [Header("Radial Rotation")]
         [SerializeField] private Vector3 _rotation;
         [SerializeField] private float _speedRot;
-        
 
-        [Space(3)]
-        [Header("Patrol Waypoints")]
-        [SerializeField] private GameObject _pointA;
-        [SerializeField] private GameObject _pointB;
-        [SerializeField] private Transform _currentPoint;
-
-        [Space(3)]
-        [Header("Move")]
-        [SerializeField] private float _speed;
-
-        [Space(3)]
-        [Header("Timer")]
-        [SerializeField] private float _timer = 0.0f;
-        [SerializeField] private float _timeToStartMove;
         #endregion
         #region Public Fields
         #endregion
@@ -71,7 +56,7 @@ namespace VictorRivero
         // attached to is instantiated
         void Awake()
         {
-            _currentPoint = _pointB.transform;
+
         }
 
         // FixedUpdate is called at fixed time intervals
@@ -91,13 +76,5 @@ namespace VictorRivero
         #endregion
         #region Public Methods
         #endregion
-
-        private void OnDrawGizmos()
-        {
-            //Points Gizmos
-            Gizmos.DrawWireSphere(_pointA.transform.position, 0.5f);
-            Gizmos.DrawWireSphere(_pointB.transform.position, 0.5f);
-            Gizmos.DrawLine(_pointA.transform.position, _pointB.transform.position);
-        }
     }
 }

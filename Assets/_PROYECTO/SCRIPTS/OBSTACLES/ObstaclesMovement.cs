@@ -28,6 +28,7 @@ public class ObstaclesMovement : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _objectPool = FindObjectOfType<ObjectPool>();
     }
 
     // Update is called once per frame
@@ -55,8 +56,9 @@ public class ObstaclesMovement : MonoBehaviour
         }
     }
 
-    void Awake()
+    void OnEnable()
     {
         _currentPoint = _pointInit.transform;
+        _objectPool = FindObjectOfType<ObjectPool>();
     }
 }

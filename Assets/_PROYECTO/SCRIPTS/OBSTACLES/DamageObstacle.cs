@@ -19,6 +19,8 @@ namespace VictorRivero{
         #region Private Fields
         [Header("Damage")]
         [SerializeField] private int _dmg = -1;
+
+        [SerializeField] private Collider2D _collider;
         #endregion
         #region Public Fields
         #endregion
@@ -30,7 +32,8 @@ namespace VictorRivero{
         // Start is called before the first frame update
         void Start()
         {
-
+            _collider = GetComponent<Collider2D>();
+            _collider.isTrigger = true;
         }
 
         // Update is called once per frame
@@ -66,7 +69,6 @@ namespace VictorRivero{
             {
                 //Player recibe damage del obstaculo
                 PlayerLife.instance.ChangeLife(-_dmg);
-                Debug.Log("Haciendo daño");
             }
         }
         #endregion

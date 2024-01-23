@@ -19,7 +19,7 @@ public class ButtonController : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("GamePlayScene");
+        SceneManager.LoadScene("ObstaclesScene");
     }
 
     public void CloseGame()

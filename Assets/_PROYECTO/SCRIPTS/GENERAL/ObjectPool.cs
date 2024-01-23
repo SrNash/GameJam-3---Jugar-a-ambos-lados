@@ -31,6 +31,12 @@ namespace VictorRivero{
 		[SerializeField] private GameObject _radialObstacleGo;
 		[SerializeField] private GameObject _postObstacleGo;
 		[SerializeField] private GameObject _numberGo;
+
+        [Space(3)]
+        [Header("Init Positions")]
+        [SerializeField] private Transform _pointA;
+        [SerializeField] private Transform _pointB;
+
         #endregion
         #region Public Fields
         #endregion
@@ -71,13 +77,13 @@ namespace VictorRivero{
 			{
 				GameObject obj = Instantiate(_numberGo);
 				//obj.transform.parent = transform;
-				obj?.SetActive(false);
+				obj.SetActive(false);
 				_pooledFloatNumber.Add(obj);
 			}
-		}
+        }
 
-		// Update is called once per frame
-		void Update()
+            // Update is called once per frame
+            void Update()
 		{
 			
 		}
@@ -92,7 +98,7 @@ namespace VictorRivero{
 				_instance = this;
 			}
 
-			DontDestroyOnLoad(this.gameObject);
+			//DontDestroyOnLoad(this.gameObject);
 		}
 	    
 		// FixedUpdate is called at fixed time intervals
@@ -127,6 +133,7 @@ namespace VictorRivero{
 				{
 					return _pooledFloatNumber[i];
 				}
+				else { i++; }
 			}
 			
 			return null;

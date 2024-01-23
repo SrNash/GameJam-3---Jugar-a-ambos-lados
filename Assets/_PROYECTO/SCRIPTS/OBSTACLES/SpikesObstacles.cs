@@ -27,17 +27,9 @@ namespace VictorRivero{
         [SerializeField] private int _spikesCount;
         [SerializeField] private GameObject[] _spikesList;
 
-        [Space(3)]
-        [Header("Patrol Waypoints")]
-        [SerializeField] private GameObject _pointA;
-        [SerializeField] private GameObject _pointB;
-        [SerializeField] private Transform _currentPoint;
-
-        [Space(3)]
-        [Header("Timer")]
-        [SerializeField]private float _timer = 0.0f;
-        [SerializeField] private float _timeToStartMove;
-
+		[Space(3)]
+		[Header("Collider")]
+		[SerializeField] private BoxCollider2D _col;
         
         #endregion
         #region Public Fields
@@ -65,7 +57,6 @@ namespace VictorRivero{
 		void Awake()
 		{
 			GetSpikes();
-            _currentPoint = _pointB.transform;
         }
 
 		
@@ -87,6 +78,7 @@ namespace VictorRivero{
         {
             _count = Random.Range((int)1.0f, (int)4.0f);
             _spikesCount = (int)_count;
+			_col.size *= new Vector2(_spikesCount,1.0f);
 
             for (int i = 0; i < _spikesCount; i++)
             {
@@ -97,18 +89,8 @@ namespace VictorRivero{
         #region Public Methods
         #endregion
         #region IEnumerators
-        IEnumerator RestartSpiker()
-        {
-            transform.position = _currentPoint.position;
-            yield return null;
-        }
+
         #endregion
-        private void OnDrawGizmos()
-        {
-            //Points Gizmos
-            Gizmos.DrawWireSphere(_pointA.transform.position, 0.5f);
-            Gizmos.DrawWireSphere(_pointB.transform.position, 0.5f);
-            Gizmos.DrawLine(_pointA.transform.position, _pointB.transform.position);
-        }
+
     }
  }

@@ -41,8 +41,8 @@ namespace VictorRivero{
 		// Update is called once per frame
 		void Update()
 		{
-			
-		}
+            //_scoreText.text = _score.ToString().PadLeft(4, '0');
+        }
 
 		// Awake is called when the script is
 		// first loaded or when an object is
@@ -54,7 +54,7 @@ namespace VictorRivero{
 				_instance = this;
 			}
 
-			DontDestroyOnLoad(this.gameObject);
+			DontDestroyOnLoad(this);
 		}
 	    
 		// FixedUpdate is called at fixed time intervals
@@ -66,7 +66,7 @@ namespace VictorRivero{
 		// LateUpdate is called after all Update functions have been called
 		void LateUpdate()
 		{
-			_scoreText.text = _score.ToString().PadLeft(4, '0');
+			
 		}
 		#endregion
 		#region Private Methods
@@ -82,7 +82,8 @@ namespace VictorRivero{
 		public void AddPointsToScore(int amount)
 		{
 			_score += amount;
-			CheckPoints();
+            _scoreText.text = _score.ToString().PadLeft(4, '0');
+            CheckPoints();
 		}
 		#endregion
 	}

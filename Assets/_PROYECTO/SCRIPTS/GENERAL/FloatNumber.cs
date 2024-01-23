@@ -18,7 +18,7 @@ namespace VictorRivero{
 		#endregion
 		#region Private Fields
 		private float _timer = 0.0f;
-		private float _timeToDessapear = 2.0f;
+		private float _timeToDessapear = 1.5f;
 		#endregion
 		#region Public Fields
 		#endregion
@@ -55,6 +55,7 @@ namespace VictorRivero{
 		{
             //_timer += Time.deltaTime;
 			_timer = 0.0f;
+			DontDestroyOnLoad(gameObject);
         }
 	    
 		// FixedUpdate is called at fixed time intervals

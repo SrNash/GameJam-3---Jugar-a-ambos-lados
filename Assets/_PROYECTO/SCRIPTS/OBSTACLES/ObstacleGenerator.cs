@@ -93,6 +93,9 @@ namespace VictorRivero
                         Debug.Log("Point B");
                         //_obstacle.transform.position = _pointB.position;
                         _obstacle.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+
+                        //_trigger = _obstacle.GetComponentInChildren<TriggerPoints>();
+
                         _obstacle.GetComponent<ObstaclesMovement>().pointInit = _pointB.gameObject;
                         _obstacle.GetComponent<ObstaclesMovement>().pointFinal = _pointA.gameObject;
                         _obstacle.SetActive(true);
@@ -103,8 +106,8 @@ namespace VictorRivero
                         // _obstacle.transform.position = _pointD.position;
                         _obstacle.transform.rotation = Quaternion.Euler(0.0f, 0.0f, _z);
 
-                        _trigger = _obstacle.GetComponentInChildren<TriggerPoints>();
-                        _trigger.offset = new Vector3(0.0f, -4.0f, 0.0f);
+                        /*_trigger = _obstacle.GetComponentInChildren<TriggerPoints>();
+                        _trigger.offset *= -1;*/
 
                         _obstacle.GetComponent<ObstaclesMovement>().pointInit = _pointD.gameObject;
                         _obstacle.GetComponent<ObstaclesMovement>().pointFinal = _pointC.gameObject;
@@ -121,5 +124,16 @@ namespace VictorRivero
         #endregion
         #region IEnumerators
         #endregion
+
+        private void OnDrawGizmos()
+        {
+            //Points Gizmos
+            Gizmos.DrawWireSphere(_pointA.transform.position, 0.5f);
+            Gizmos.DrawWireSphere(_pointB.transform.position, 0.5f);
+            Gizmos.DrawLine(_pointA.transform.position, _pointB.transform.position);
+            Gizmos.DrawWireSphere(_pointC.transform.position, 0.5f);
+            Gizmos.DrawWireSphere(_pointD.transform.position, 0.5f);
+            Gizmos.DrawLine(_pointC.transform.position, _pointD.transform.position);
+        }
     }
 }
