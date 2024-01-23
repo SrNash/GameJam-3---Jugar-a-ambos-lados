@@ -63,13 +63,15 @@ namespace VictorRivero
         // Update is called once per frame
         void Update()
         {
+            _radialGo.transform.localRotation = Quaternion.Euler(_rotation * _speedRot * Time.deltaTime);
+
             if (_currentPoint == _pointB.transform)
             {
                 transform.position = _currentPoint.position;
             }
             else
             {
-                _radialGo.transform.localRotation = Quaternion.Euler(_rotation * _speedRot * Time.deltaTime); ;
+                //_radialGo.transform.localRotation = Quaternion.Euler(_rotation * _speedRot * Time.deltaTime);
                 _rb.velocity = new Vector2(-_speed, 0.0f);
             }
 
@@ -89,7 +91,7 @@ namespace VictorRivero
         // attached to is instantiated
         void Awake()
         {
-
+            _currentPoint = _pointB.transform;
         }
 
         // FixedUpdate is called at fixed time intervals
